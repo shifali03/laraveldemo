@@ -8,7 +8,8 @@
                 <div class="card-header">Admin Dashboard</div>
 
                 <div class="card-body">
-                    You are logged in as Admin!
+                    @component('components.who')
+                    @endcomponent
                 </div>
             </div>
         </div>
