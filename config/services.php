@@ -36,8 +36,8 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
-        'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
+        'client_id' => '2102245746762927'        ,         // Your GitHub Client ID
+        'client_secret' => '592d38a8d119fb00e17a95009c724a6b', // Your GitHub Client Secret
         'redirect' => 'http://laravel.test/login/facebook/callback',
     ],
 
