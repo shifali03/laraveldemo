@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Socialite;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -62,7 +63,12 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
+        $socialUser = Socialite::driver('facebook')->user();
+        // if user exists and log user in
+        $user = User::where('email', $socialUser->email);
+
+        // else sign up the user
+        // finally log user in
         return $user->name;
         // $user->token;
     }
