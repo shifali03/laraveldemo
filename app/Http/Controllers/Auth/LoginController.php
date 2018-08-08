@@ -70,7 +70,6 @@ class LoginController extends Controller
             Auth::loginUsingId($user->id);
             return redirect()->route('home');
         }
-
         // else sign up the user
         $signUpUser = User::create([
             'name' => $socialUser->user->name,
@@ -83,9 +82,6 @@ class LoginController extends Controller
                 return redirect()->route('home');
             }
         }
-
-        return $user->name;
-        // $user->token;
     }
 
 
