@@ -65,10 +65,25 @@ class LoginController extends Controller
     {
         $socialUser = Socialite::driver('facebook')->user();
         // if user exists and log user in
-        $user = User::where('email', $socialUser->email);
+        $user = User::where('email', $socialUser->user->email)->first();
+        if($user){
+            Auth::loginUsingId($user->id);
+            return redirect()->route('home');
+        }
 
         // else sign up the user
+        $signUpUser = User::create([
+            'name' => $socialUser->user->name,
+            'email' => $socialUser->user->email,
+            'password' => bcrypt('12345'),
+        ]);
         // finally log user in
+        if($signUpUser){
+            if(Auth::loginUsingId($user->id)){
+                return redirect()->route('home');
+            }
+        }
+
         return $user->name;
         // $user->token;
     }
